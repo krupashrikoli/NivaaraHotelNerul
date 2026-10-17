@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --color-charcoal: #111111;
+  --color-grey: #6b7280;
+  --color-gold: #c6a86a;
+  --color-ghd-brown: #543119;
+  --color-brand: #274395;
+  --color-brand-soft: #6b74d6;
+  --color-border: #e5e7eb;
+  --color-muted: #f9fafb;
+  --color-ring: #c6a86a;
+  --color-input: #e5e7eb;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #111111;
+  --color-accent: #f9fafb;
+  --color-accent-foreground: #111111;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-heading: var(--font-forum);
+  --font-brand: var(--font-playfair);
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-reservation: var(--font-dm-sans);
+  --font-display-wide: var(--font-archivo-expanded);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+}
+
+:root {
+  --brand: #274395;
+  --brand-soft: #6b74d6;
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: var(--brand-soft);
+  --primary-foreground: #ffffff;
+  --secondary: #f9fafb;
+  --secondary-foreground: #111111;
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
+  --accent: #c6a86a;
+  --accent-foreground: #111111;
+  --destructive: #dc2626;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: var(--brand-soft);
+  --radius: 0.5rem;
+  --ghd-brown: #543119;
+
+  /* Footer — light ivory */
+  --footer-bg-r: 250;
+  --footer-bg-g: 247;
+  --footer-bg-b: 240;
+  --footer-bg-opacity: 1;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    @apply bg-white font-body font-light text-charcoal antialiased;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  img {
+    opacity: 1;
+  }
+}
+
+.page-media-loading {
+  /* Keep layout interactive; only soft-hide until first paint is ready */
+  opacity: 0;
+}
+
+.page-media-ready {
+  opacity: 1;
+}
+
+/* One-tap activation for links/buttons (avoids iOS sticky-hover double tap) */
+a,
+button,
+[role="button"],
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer utilities {
+  .font-brand {
+    font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+  }
+  .font-heading {
+    font-family: var(--font-forum), "Forum", Georgia, serif;
+    font-style: normal;
+    font-weight: 100;
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .font-reservation {
+    font-family: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+  }
+  .font-display-wide {
+    font-family: var(--font-archivo-expanded), "Archivo", system-ui, sans-serif;
+    font-stretch: 125%;
+    font-weight: 900;
+    font-variation-settings: "wght" 900, "wdth" 125;
+  }
+  .reservation-calendar button[data-day] {
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease,
+      border-radius 0.35s ease;
+  }
+  .reservation-calendar button[data-day][data-range-start="true"],
+  .reservation-calendar button[data-day][data-range-end="true"],
+  .reservation-calendar button[data-day][data-selected-single="true"] {
+    background-color: #543119 !important;
+    color: #ffffff !important;
+  }
+  .reservation-calendar button[data-day][data-range-middle="true"] {
+    background-color: rgb(84 49 25 / 0.15) !important;
+    color: #111111 !important;
+  }
+  .reservation-calendar .rdp-range_start,
+  .reservation-calendar .rdp-range_middle,
+  .reservation-calendar .rdp-range_end {
+    background-color: rgb(84 49 25 / 0.15) !important;
+  }
+  .reservation-ui,
+  .reservation-ui * {
+    text-transform: uppercase;
+  }
+  .reservation-divider {
+    background-color: rgb(148 163 184 / 0.42);
+  }
+  .site-header--scrolled {
+    background-color: #ffffff !important;
+  }
+  .site-header--scrolled .site-header__logo,
+  .site-header--scrolled .site-header__contact {
+    color: #543119 !important;
+  }
+  .site-header--scrolled .site-header__nav-link {
+    color: #111111 !important;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .site-header--scrolled .site-header__nav-link:hover {
+      color: rgb(17 17 17 / 0.7) !important;
+    }
+    .site-header--scrolled .site-header__contact:hover {
+      color: rgb(84 49 25 / 0.65) !important;
+    }
+  }
+}
+
+footer#contact.site-footer {
+  background-color: rgb(
+    var(--footer-bg-r) var(--footer-bg-g) var(--footer-bg-b) /
+      var(--footer-bg-opacity)
+  ) !important;
+}
+
+.room-gallery-crossfade-in {
+  animation: room-gallery-crossfade 280ms cubic-bezier(0.33, 0, 0.2, 1) forwards;
+}
+
+@keyframes room-gallery-crossfade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.corporate-hero-zoom {
+  animation: slow-zoom 28s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .corporate-hero-zoom {
+    animation: none;
+  }
+}
+
+#hero.hero-section .hero-section__poster {
+  z-index: 0;
+}
+
+#hero.hero-section .hero-section__media {
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#hero.hero-section .hero-section__media--ready {
+  opacity: 1;
+  visibility: visible;
+}
+
+#hero.hero-section .hero-section__poster--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.home-page {
+  position: relative;
+  background-color: #ffffff;
+}
+
+/* Full-viewport textured backdrop — visible only where sections are transparent
+   (Nivaãra intro, Explore Nivaãra, Stay Close beaches CTA, Words From Our Guests) */
+.home-page__texture {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #ffffff;
+  background-image: url("/images/corporate/white-background.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.home-page > main {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page > footer#contact.site-footer {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  background-color: rgb(
+    var(--footer-bg-r) var(--footer-bg-g) var(--footer-bg-b) / 1
+  ) !important;
+}
+
+.home-page > header.site-header {
+  z-index: 100;
+}
+
+#hero.hero-section .hero-section__title {
+  font-size: clamp(1.25rem, 4.8vw, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: clamp(-0.01em, 0.02vw, 0.015em);
+}
+
+/* Sticky booking CTA — desktop floating button */
+.sticky-booking-btn {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+/* Mobile book strip — contact icons + Book Now */
+:root {
+  --mobile-book-strip-height: 6.75rem;
+}
+
+@media (max-width: 767px) {
+  .mobile-book-cluster {
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    z-index: 9998 !important;
+    height: calc(var(--mobile-book-strip-height) + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: var(--mobile-book-strip-height) !important;
+    padding: 0 0 env(safe-area-inset-bottom, 0px) !important;
+    background-color: transparent !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    pointer-events: none;
+  }
+
+  .mobile-book-cluster__icons {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    padding: 0 1rem 0.65rem !important;
+    pointer-events: auto;
+  }
+
+  .mobile-book-cluster__book {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    min-height: 2.75rem !important;
+    background-color: #c6a86a !important;
+    color: #ffffff !important;
+    font-family: var(--font-body), system-ui, sans-serif !important;
+    font-size: 0.6875rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.14em !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    pointer-events: auto;
+  }
+
+  /* Reserve space inside the footer so content clears the strip without extra page scroll */
+  footer#contact.site-footer {
+    padding-bottom: calc(4rem + var(--mobile-book-strip-height) + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  footer#contact.site-footer {
+    padding-bottom: calc(5rem + var(--mobile-book-strip-height) + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-book-cluster {
+    display: none !important;
+  }
+}
+
+/* Legacy single strip class kept inert if referenced elsewhere */
+.mobile-book-strip {
+  display: none !important;
+}
