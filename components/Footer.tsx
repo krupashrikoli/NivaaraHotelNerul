@@ -74,7 +74,7 @@ const SOCIAL_ICONS = {
 
 export function Footer() {
   return (
-    <footer id="contact" className="site-footer relative overflow-hidden py-16 sm:py-20">
+    <footer id="contact" className="site-footer relative overflow-hidden py-12 sm:py-16 md:py-20">
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
         aria-hidden
@@ -84,14 +84,14 @@ export function Footer() {
           alt=""
           width={1082}
           height={1082}
-          className="h-[min(110vw,36rem)] w-[min(110vw,36rem)] object-contain opacity-10 sm:h-[42rem] sm:w-[42rem] md:h-[48rem] md:w-[48rem]"
-          sizes="(max-width: 640px) 110vw, 768px"
+          className="h-[min(90vw,28rem)] w-[min(90vw,28rem)] object-contain opacity-10 sm:h-[min(70vw,36rem)] sm:w-[min(70vw,36rem)] md:h-[42rem] md:w-[42rem] lg:h-[48rem] lg:w-[48rem]"
+          sizes="(max-width: 640px) 90vw, (max-width: 768px) 70vw, 768px"
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-[1200px] flex-col items-center px-6 text-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col items-center px-4 text-center sm:px-6 lg:px-8">
         <nav className="w-full" aria-label="Footer navigation">
-          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-7 md:gap-x-9">
+          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-7 md:gap-x-9">
             {NAV_ITEMS.map((item) => (
               <li key={item.href}>
                 {item.label === "CONTACT" ? (
@@ -112,7 +112,7 @@ export function Footer() {
         </nav>
 
         <nav className="mt-5 w-full" aria-label="Legal">
-          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-5">
+          <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:gap-x-5">
             <li>
               <Link
                 href="/privacy"
@@ -136,17 +136,19 @@ export function Footer() {
         </nav>
 
         {/* Soft spotlight behind logos so gold marks read as the footer focus */}
-        <div className="relative mt-6 flex max-w-full items-center justify-center sm:mt-8">
+        <div className="relative mt-6 w-full max-w-full sm:mt-8 md:mt-10">
           <span
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[170%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(250,247,240,0.95)_0%,rgba(250,247,240,0.72)_45%,transparent_72%)]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[170%] w-[min(100%,36rem)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(250,247,240,0.95)_0%,rgba(250,247,240,0.72)_45%,transparent_72%)]"
             aria-hidden
           />
 
-          <div className="relative z-10 flex items-center justify-center gap-6 sm:gap-10 md:gap-14">
-            <Link
-              href="/"
-              className="w-[min(40vw,9.5rem)] shrink-0 sm:w-[11.5rem] md:w-[13.5rem]"
+          {/* Stack on small screens; row from sm up — never overflow */}
+          <div className="relative z-10 flex w-full flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8 md:gap-12 lg:gap-14">
+            <a
+              href="https://www.ghdhotels.in"
+              className="block w-[min(72%,11rem)] shrink-0 sm:w-[min(40vw,11.5rem)] md:w-[13.5rem]"
               aria-label="GHD Hotels home"
+              rel="noopener noreferrer"
             >
               <Image
                 src={GHD_LOGO}
@@ -154,51 +156,59 @@ export function Footer() {
                 width={1160}
                 height={420}
                 className="h-auto w-full object-contain object-center drop-shadow-[0_6px_18px_rgba(84,49,25,0.22)]"
-                sizes="(max-width: 640px) 40vw, 216px"
+                sizes="(max-width: 640px) 72vw, 216px"
                 priority
               />
-            </Link>
+            </a>
 
             <span
               className="hidden h-10 w-px shrink-0 bg-[#C6A86B]/35 sm:block sm:h-12 md:h-14"
               aria-hidden
             />
+            <span
+              className="h-px w-16 shrink-0 bg-[#C6A86B]/35 sm:hidden"
+              aria-hidden
+            />
 
             <div
-              className="flex items-center gap-3 sm:gap-4 md:gap-5"
+              className="flex w-full max-w-[22rem] flex-wrap items-center justify-center gap-x-4 gap-y-3 px-1 sm:w-auto sm:max-w-none sm:flex-nowrap sm:gap-x-4 sm:gap-y-0 sm:px-0 md:gap-x-5"
               aria-label="GHD Hotels brands"
             >
-              <div
-                className="h-9 w-auto shrink-0 opacity-65 sm:h-11 md:h-12"
+              <a
+                href="https://samraya.ghdhotels.in"
+                className="flex h-7 max-w-[7.5rem] shrink-0 items-center opacity-65 transition-opacity duration-300 touch-manipulation hover:opacity-90 sm:h-9 sm:max-w-[9rem] md:h-10 md:max-w-[10rem]"
                 aria-label="Samrāya by GHD Hotels"
+                rel="noopener noreferrer"
               >
                 <Image
                   src={SAMRAYA_LOGO}
-                  alt="Samrāya by GHD Hotels"
-                  width={1794}
-                  height={1324}
-                  className="h-full w-auto object-contain object-center"
-                  sizes="(max-width: 640px) 56px, 72px"
+                  alt="Samrāya Lifestyle & Wellness Resort"
+                  width={3085}
+                  height={565}
+                  className="h-full w-auto max-w-full object-contain object-center"
+                  sizes="(max-width: 640px) 120px, 160px"
                 />
-              </div>
+              </a>
 
-              <div
-                className="h-7 w-auto shrink-0 opacity-65 sm:h-8 md:h-9"
+              <a
+                href="https://celestra.ghdhotels.in"
+                className="flex h-6 max-w-[6.5rem] shrink-0 items-center opacity-65 transition-opacity duration-300 touch-manipulation hover:opacity-90 sm:h-8 sm:max-w-[8rem] md:h-9 md:max-w-[9rem]"
                 aria-label="Celéstra by GHD Hotels"
+                rel="noopener noreferrer"
               >
                 <Image
                   src={CELESTRA_LOGO}
                   alt="Celéstra by GHD Hotels"
                   width={932}
                   height={255}
-                  className="h-full w-auto object-contain object-center"
+                  className="h-full w-auto max-w-full object-contain object-center"
                   sizes="(max-width: 640px) 100px, 140px"
                 />
-              </div>
+              </a>
 
               <Link
                 href="/"
-                className="h-9 w-auto shrink-0 opacity-65 transition-opacity duration-300 hover:opacity-90 sm:h-11 md:h-12"
+                className="flex h-8 max-w-[3.25rem] shrink-0 items-center opacity-65 transition-opacity duration-300 touch-manipulation hover:opacity-90 sm:h-11 sm:max-w-[4rem] md:h-12 md:max-w-[4.5rem]"
                 aria-label="Nivaãra by GHD Hotels"
               >
                 <Image
@@ -206,7 +216,7 @@ export function Footer() {
                   alt="Nivaãra by GHD Hotels"
                   width={736}
                   height={510}
-                  className="h-full w-auto object-contain object-center"
+                  className="h-full w-auto max-w-full object-contain object-center"
                   sizes="(max-width: 640px) 56px, 72px"
                 />
               </Link>
@@ -214,7 +224,7 @@ export function Footer() {
           </div>
         </div>
 
-        <ul className="mt-5 flex items-center justify-center gap-5 sm:mt-6 sm:gap-6">
+        <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:mt-8 sm:gap-x-6">
           {SOCIAL_LINKS.map((social) => {
             const Icon = SOCIAL_ICONS[social.icon];
 
@@ -225,7 +235,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="inline-flex text-charcoal transition-[color,opacity] duration-300 hover:text-[#543119]"
+                  className="inline-flex size-10 items-center justify-center text-charcoal transition-[color,opacity] duration-300 hover:text-[#543119] sm:size-auto"
                 >
                   <Icon className="size-4 sm:size-[18px]" />
                 </a>
@@ -234,7 +244,7 @@ export function Footer() {
           })}
         </ul>
 
-        <div className="mt-8 w-full border-t border-charcoal/15 pt-6 sm:mt-10 sm:pt-7">
+        <div className="mt-8 w-full border-t border-charcoal/15 pt-5 sm:mt-10 sm:pt-7">
           <p className="font-body text-[8px] font-semibold tracking-[0.03em] text-charcoal/75 sm:text-[9px]">
             © 2026 Nivaãra by GHD Hotels. All Rights Reserved.
           </p>

@@ -738,7 +738,7 @@ export const HERO_VIDEO_POSTER = "/images/nivaara/nivaara-hero-poster.webp";
 
 export const NIVAARA_LOGO = "/logos/nivaara-by-ghd-hotels-logo.webp";
 export const CELESTRA_LOGO = "/logos/celestra-by-ghd-hotels-logo.webp";
-export const SAMRAYA_LOGO = "/logos/samraya-by-ghd-hotels-logo.webp";
+export const SAMRAYA_LOGO = "/logos/samraya-lifestyle-wellness-logo.webp";
 /** Tab / favicon — same mark as header, page, and footer. */
 export const NIVAARA_FAVICON = NIVAARA_LOGO;
 
